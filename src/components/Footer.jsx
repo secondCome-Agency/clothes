@@ -88,11 +88,11 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
-                className="flex-1 bg-transparent px-4 py-2.5 text-xs sm:text-sm font-sans text-[#080808] placeholder-[#777777] focus:outline-none"
+                className="flex-1 min-w-0 bg-transparent px-3 sm:px-4 py-2.5 text-xs sm:text-sm font-sans text-[#080808] placeholder-[#777777] focus:outline-none"
               />
               <button
                 type="submit"
-                className="rounded-full bg-black hover:bg-neutral-800 text-white text-xs sm:text-sm font-sans font-medium px-5 sm:px-6 py-2.5 flex items-center gap-2 transition shrink-0"
+                className="rounded-full bg-black hover:bg-neutral-800 text-white text-xs sm:text-sm font-sans font-medium px-4 sm:px-6 py-2.5 flex items-center gap-2 transition shrink-0"
               >
                 {subscribed ? (
                   <>
@@ -322,7 +322,7 @@ export default function Footer() {
           </div>
 
           {/* Features and Monochrome Social Icons */}
-          <div className="flex flex-wrap items-center gap-2.5 sm:gap-4 text-[10.5px] sm:text-[11px] font-mono uppercase tracking-wider text-[#080808]">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-2.5 sm:gap-4 text-[10.5px] sm:text-[11px] font-mono uppercase tracking-wider text-[#080808]">
             <span className="text-[#BDBDBD] font-light">|</span>
             <span>PREPAID DISCOUNTS</span>
             <span className="text-[#BDBDBD] font-light">|</span>

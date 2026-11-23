@@ -85,14 +85,14 @@ export default function ProductCard({ product }) {
       </Link>
 
       {/* Product Information */}
-      <div className="p-3.5 flex flex-col justify-between flex-1">
+      <div className="p-2.5 sm:p-3.5 flex flex-col justify-between flex-1">
         <div>
           <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider block mb-1">
             {product.subtitle || product.category}
           </span>
           <Link 
             to={`/products/${product.slug}`}
-            className="text-sm font-heading font-medium sm:font-semibold text-zinc-900 tracking-tight hover:underline line-clamp-1 block"
+            className="text-xs sm:text-sm font-heading font-medium sm:font-semibold text-zinc-900 tracking-tight hover:underline line-clamp-1 block"
           >
             {product.name}
           </Link>
@@ -100,11 +100,11 @@ export default function ProductCard({ product }) {
 
         {/* Price Row */}
         <div className="flex items-baseline gap-2 mt-2 pt-2 border-t border-zinc-100">
-          <span className="text-sm font-mono font-medium text-zinc-900">
+          <span className="text-xs sm:text-sm font-mono font-medium text-zinc-900">
             ₹{product.price.toLocaleString()}
           </span>
           {product.originalPrice && (
-            <span className="text-xs font-mono text-zinc-400 line-through">
+            <span className="text-[11px] sm:text-xs font-mono text-zinc-400 line-through">
               ₹{product.originalPrice.toLocaleString()}
             </span>
           )}

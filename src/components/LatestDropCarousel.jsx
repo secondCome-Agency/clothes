@@ -61,12 +61,12 @@ export default function LatestDropCarousel() {
         {/* Carousel Scroll Container */}
         <div
           ref={scrollContainerRef}
-          className="flex gap-6 overflow-x-auto scrollbar-none pb-4 snap-x"
+          className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-none pb-4 snap-x -mx-4 px-4 sm:mx-0 sm:px-0"
         >
           {LATEST_DROPS.map((product) => (
             <div
               key={product.id}
-              className="w-[260px] sm:w-[280px] flex-shrink-0 snap-start"
+              className="w-[230px] sm:w-[280px] flex-shrink-0 snap-start"
             >
               <ProductCard product={product} />
             </div>

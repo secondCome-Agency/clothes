@@ -36,11 +36,11 @@ function opacityForProgress(p) {
 
 function getLayout() {
   const w = window.innerWidth;
-  const planeW = w < 768 ? Math.min(w * 0.28, 200) : Math.min(w * 0.26, 440);
+  const planeW = w < 768 ? Math.min(Math.max(w * 0.25, 80), 160) : Math.min(w * 0.26, 440);
   return {
     planeW,
     planeH: planeW * (4 / 3),
-    offsetX: w < 768 ? Math.min(w * 0.38, 190) : Math.min(w * 0.33, 480),
+    offsetX: w < 768 ? Math.min(Math.max(w * 0.42, 130), 220) : Math.min(w * 0.33, 480),
     angle: 24
   };
 }
@@ -136,14 +136,13 @@ export default function EndlessHero() {
         .endless-root *::before,
         .endless-root *::after {
           box-sizing: border-box;
-          margin: 0;
-          padding: 0;
         }
 
         .endless-root {
           position: relative;
           width: 100%;
           height: 100vh;
+          height: 100dvh;
           overflow: hidden;
           background-color: #000000;
           color: #ffffff;
@@ -213,12 +212,18 @@ export default function EndlessHero() {
         .endless-root .endless-title {
           color: #ffffff;
           font-family: 'Space Grotesk', sans-serif;
-          font-size: 2rem;
+          font-size: 1.75rem;
           font-weight: 700;
           letter-spacing: -0.02em;
-          line-height: 1;
+          line-height: 1.1;
           white-space: nowrap;
           text-transform: uppercase;
+        }
+
+        @media (min-width: 480px) {
+          .endless-root .endless-title {
+            font-size: 2.25rem;
+          }
         }
 
         @media (min-width: 768px) {
@@ -236,45 +241,125 @@ export default function EndlessHero() {
         }
 
         .endless-root .endless-tagline {
-          margin-top: 1rem;
+          margin-top: 0.75rem;
           font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.75rem;
+          font-size: 0.6875rem;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           color: rgba(255, 255, 255, 0.75);
+          padding: 0 1rem;
         }
 
         @media (min-width: 768px) {
           .endless-root .endless-tagline {
+            margin-top: 1rem;
             font-size: 0.8125rem;
           }
         }
 
         .endless-root .endless-cta-group {
-          margin-top: 1.75rem;
+          margin-top: 1.5rem;
           display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
           align-items: center;
-          gap: 1rem;
+          gap: 0.75rem;
+          padding: 0 1rem;
+          width: 100%;
           pointer-events: auto;
+        }
+
+        @media (min-width: 640px) {
+          .endless-root .endless-cta-group {
+            margin-top: 1.75rem;
+            gap: 1rem;
+          }
+        }
+
+        .endless-root .endless-btn-primary {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          padding: 0.65rem 1.6rem;
+          border-radius: 9999px;
+          background-color: #ffffff;
+          color: #000000;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          letter-spacing: -0.01em;
+          text-decoration: none;
+          white-space: nowrap;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: pointer;
+        }
+
+        .endless-root .endless-btn-primary:hover {
+          background-color: #f4f4f5;
+          transform: translateY(-1px) scale(1.04);
+          box-shadow: 0 6px 22px rgba(255, 255, 255, 0.2), 0 4px 14px rgba(0, 0, 0, 0.5);
+        }
+
+        .endless-root .endless-btn-primary:active {
+          transform: translateY(0) scale(0.98);
+        }
+
+        .endless-root .endless-btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          padding: 0.65rem 1.6rem;
+          border-radius: 9999px;
+          background-color: rgba(0, 0, 0, 0.45);
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          color: #ffffff;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          letter-spacing: -0.01em;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: pointer;
+        }
+
+        .endless-root .endless-btn-secondary:hover {
+          background-color: rgba(255, 255, 255, 0.15);
+          border-color: rgba(255, 255, 255, 0.8);
+          transform: translateY(-1px) scale(1.04);
+        }
+
+        .endless-root .endless-btn-secondary:active {
+          transform: translateY(0) scale(0.98);
         }
 
         .endless-root .endless-footer {
           position: absolute;
-          bottom: 2.5rem;
+          bottom: 1.5rem;
           left: 50%;
           z-index: 10;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 0.5rem;
+          gap: 0.375rem;
           transform: translateX(-50%);
           color: #707070;
           pointer-events: auto;
+          width: 100%;
+          max-width: 90vw;
+          padding: 0 1rem;
         }
 
         @media (min-width: 768px) {
           .endless-root .endless-footer {
             bottom: 2rem;
+            gap: 0.5rem;
+            max-width: none;
           }
         }
 
@@ -286,12 +371,19 @@ export default function EndlessHero() {
         .endless-root .endless-caption {
           color: #707070;
           font-family: 'DM Sans', sans-serif;
-          font-size: 0.875rem;
+          font-size: 0.75rem;
           font-weight: 400;
           letter-spacing: 0;
           line-height: 1.4;
           text-align: center;
-          white-space: nowrap;
+          white-space: normal;
+        }
+
+        @media (min-width: 640px) {
+          .endless-root .endless-caption {
+            font-size: 0.875rem;
+            white-space: nowrap;
+          }
         }
 
         @supports (-webkit-touch-callout: none) {
@@ -328,15 +420,15 @@ export default function EndlessHero() {
           <a
             href="#clothing-rail"
             onClick={scrollToDrop}
-            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 text-xs font-sans font-medium text-black transition-all duration-300 hover:bg-zinc-200 hover:scale-105 shadow-md"
+            className="endless-btn-primary group"
           >
             <span>Explore Latest Drop</span>
-            <ArrowDown className="size-3.5" />
+            <ArrowDown className="w-3.5 h-3.5 shrink-0 stroke-[2.2] transition-transform duration-300 group-hover:translate-y-0.5" />
           </a>
 
           <Link
             to="/collections/all"
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-6 py-2.5 text-xs font-sans font-medium text-white backdrop-blur-md transition-all duration-300 hover:border-white hover:bg-white/10"
+            className="endless-btn-secondary"
           >
             <span>View Catalog</span>
           </Link>

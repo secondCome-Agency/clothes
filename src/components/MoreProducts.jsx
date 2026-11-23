@@ -30,7 +30,7 @@ export default function MoreProducts() {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
           {MORE_PRODUCTS.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

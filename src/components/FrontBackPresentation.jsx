@@ -36,7 +36,7 @@ export default function FrontBackPresentation() {
         </div>
 
         {/* Interactive Showcase Box */}
-        <div className="max-w-4xl mx-auto bg-white border border-zinc-300 p-6 sm:p-10 shadow-sm">
+        <div className="max-w-4xl mx-auto bg-white border border-zinc-300 p-4 sm:p-8 md:p-10 shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             
             {/* Visual Flipping Frame */}
